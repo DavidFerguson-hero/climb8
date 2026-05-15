@@ -93,6 +93,20 @@ nav {
   justify-content: center;
   padding: clamp(100px, 18vh, 200px) clamp(24px, 5vw, 80px) clamp(60px, 10vh, 120px);
   position: relative;
+  background-image: url('hero.jpg');
+  background-size: cover;
+  background-position: center 40%;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15,15,18,.72) 0%,
+    rgba(15,15,18,.52) 40%,
+    rgba(15,15,18,.80) 100%
+  );
 }
 .hero-kicker {
   font-family: var(--mono);
@@ -370,6 +384,7 @@ footer a:hover { color: var(--paper); }
 
 <!-- ── HERO ───────────────────────────── -->
 <section class="hero">
+  <div style="position:relative;z-index:1">
   <div class="hero-kicker">Carbon negative climbing chalk</div>
   <h1 class="hero-headline">
     Every bag is a<br>small piece of<br>captured <span class="hl">pollution.</span>
@@ -381,6 +396,7 @@ footer a:hover { color: var(--paper); }
   <div class="hero-actions">
     <a class="btn btn-primary" href="#signup">Get notified</a>
     <a class="btn btn-secondary" href="#how">How it works</a>
+  </div>
   </div>
 </section>
 
