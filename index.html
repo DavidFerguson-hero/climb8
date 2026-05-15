@@ -530,6 +530,12 @@ footer a:hover { color: var(--paper); }
 <section class="section" id="how" style="background:var(--paper);color:var(--ink);border-top:1px solid rgba(15,15,18,.06);">
   <div class="section-inner">
     <h2 style="font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.1;color:var(--ink);">How carbon-negative chalk works.</h2>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:20px;margin-bottom:4px;">
+      <span style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g2);">Developed in partnership with</span>
+      <a href="https://forgeminerals.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;opacity:.75;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.75">
+        <img src="forge-logo.svg" alt="Forge Minerals" style="height:18px;width:auto;" />
+      </a>
+    </div>
     <div class="how-grid">
       <div class="how-card">
         <div class="how-num">01</div>
@@ -578,7 +584,8 @@ footer a:hover { color: var(--paper); }
   var btn = document.getElementById('gate-btn');
   var error = document.getElementById('gate-error');
 
-  if (sessionStorage.getItem('c8auth') === '1') {
+  var host = location.hostname;
+  if (sessionStorage.getItem('c8auth') === '1' || host === 'localhost' || host === '127.0.0.1') {
     gate.style.display = 'none';
     return;
   }
