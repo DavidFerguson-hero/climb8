@@ -368,9 +368,95 @@ footer a:hover { color: var(--paper); }
   .spec-col { border-right: none; border-bottom: 1px solid rgba(15,15,18,.08); }
   .spec-col:last-child { border-bottom: none; }
 }
+
+/* ── PASSWORD GATE ───────────────────── */
+#gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.gate-inner {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; width: 100%; max-width: 320px;
+  padding: 0 24px;
+}
+.gate-wm {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -.045em;
+  color: var(--paper);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+.gate-wm sup {
+  font-size: .55em;
+  vertical-align: .55em;
+  letter-spacing: 0;
+}
+.gate-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--g3);
+  align-self: flex-start;
+}
+.gate-row {
+  display: flex; gap: 8px; width: 100%;
+}
+.gate-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(251,249,243,.18);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 13px 16px;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color .15s var(--ease);
+}
+.gate-input:focus { border-color: var(--accent); }
+.gate-input::placeholder { color: var(--paper); opacity: .25; }
+.gate-btn {
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 13px 20px;
+  border: none; border-radius: 2px;
+  cursor: pointer;
+  transition: opacity .15s var(--ease);
+}
+.gate-btn:hover { opacity: .85; }
+.gate-error {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: #e05;
+  display: none;
+}
+.gate-error.show { display: block; }
 </style>
 </head>
 <body>
+
+<!-- ── PASSWORD GATE ─────────────────── -->
+<div id="gate">
+  <div class="gate-inner">
+    <a class="gate-wm">climb<sup>8</sup></a>
+    <div class="gate-label">Access required</div>
+    <div class="gate-row">
+      <input class="gate-input" id="gate-input" type="password" placeholder="Password" autocomplete="current-password" />
+      <button class="gate-btn" id="gate-btn">Enter</button>
+    </div>
+    <div class="gate-error" id="gate-error">Incorrect password</div>
+  </div>
+</div>
 
 <!-- ── NAV ────────────────────────────── -->
 <nav>
@@ -484,6 +570,39 @@ footer a:hover { color: var(--paper); }
     <a href="#">Contact</a>
   </div>
 </footer>
+
+<script>
+(function () {
+  var gate = document.getElementById('gate');
+  var input = document.getElementById('gate-input');
+  var btn = document.getElementById('gate-btn');
+  var error = document.getElementById('gate-error');
+
+  if (sessionStorage.getItem('c8auth') === '1') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  function attempt() {
+    if (input.value === 'bonehill') {
+      sessionStorage.setItem('c8auth', '1');
+      gate.style.display = 'none';
+    } else {
+      error.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  btn.addEventListener('click', attempt);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') attempt();
+    error.classList.remove('show');
+  });
+
+  input.focus();
+})();
+</script>
 
 </body>
 </html>
