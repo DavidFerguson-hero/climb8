@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 630" width="420" height="630">
+  
+
+  
+  <text x="44" y="80" font-family="Inter, sans-serif" font-size="36" font-weight="500" letter-spacing="-1.6" fill="#0F0F12">climb<tspan font-size="19.8" dy="-19.8" letter-spacing="0">8</tspan></text>
+
+  
+  <text font-family="Inter, sans-serif" font-weight="900" letter-spacing="-2.9" fill="#0F0F12">
+    <tspan x="44" y="248" font-size="72">Carbon</tspan>
+    <tspan x="44" y="314" font-size="72">negative</tspan>
+    <tspan x="44" y="380" font-size="72">climbing</tspan>
+    <tspan x="44" y="446" font-size="72" fill="#1447D4">chalk.</tspan>
+  </text>
+
+  
+  <line x1="44" y1="504" x2="376" y2="504" stroke="#0F0F12" stroke-opacity="0.3" stroke-width="1"></line>
+
+  
+  <text font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.7" fill="#0F0F12">
+    <tspan x="44" y="530" opacity="0.5">MGCO₃ · 99.4% PURITY</tspan>
+    <tspan x="44" y="554" opacity="0.5">100 G NET WEIGHT</tspan>
+    <tspan x="44" y="578" fill="#1447D4" opacity="0.85">−0.82 KG CO₂</tspan>
+    <tspan x="44" y="602" opacity="0.28">LOT 026 · UK</tspan>
+  </text>
+</svg>
