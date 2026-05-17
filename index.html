@@ -355,18 +355,47 @@ footer a:hover { color: var(--paper); }
 
 /* ── RESPONSIVE ──────────────────────── */
 @media (max-width: 768px) {
+  /* spec strip — 2 cols, add row divider */
   .spec-strip { grid-template-columns: repeat(2, 1fr); }
-  .spec-col:nth-child(2) { border-right: none; }
+  .spec-col:nth-child(1),
   .spec-col:nth-child(2) { border-bottom: 1px solid rgba(15,15,18,.08); }
+  .spec-col:nth-child(2) { border-right: none; }
+
+  /* product — stack, centre image */
   .product-grid { grid-template-columns: 1fr; }
+  .product-img { width: 55%; margin: 0 auto; display: block; }
+
+  /* spec rows — stack key/value so long text doesn't overflow */
+  .pspec { flex-direction: column; gap: 4px; }
+  .pspec-v { font-size: 12px; }
+
+  /* how it works */
   .how-grid { grid-template-columns: 1fr; }
+
+  /* forge partner line — wrap on narrow */
+  .forge-partner { flex-wrap: wrap; }
+
+  /* nav */
   .nav-links a:not(.nav-cta) { display: none; }
+
+  /* signup form */
   .signup-form { flex-direction: column; }
+  .signup-btn { width: 100%; text-align: center; }
 }
+
 @media (max-width: 480px) {
+  /* spec strip — single col */
   .spec-strip { grid-template-columns: 1fr; }
   .spec-col { border-right: none; border-bottom: 1px solid rgba(15,15,18,.08); }
+  .spec-col:nth-child(1),
+  .spec-col:nth-child(2) { border-bottom: 1px solid rgba(15,15,18,.08); }
   .spec-col:last-child { border-bottom: none; }
+
+  /* product image */
+  .product-img { width: 75%; }
+
+  /* hero — let the browser wrap naturally, no forced breaks */
+  .hero-headline br { display: none; }
 }
 
 /* ── PASSWORD GATE ───────────────────── */
@@ -530,7 +559,7 @@ footer a:hover { color: var(--paper); }
 <section class="section" id="how" style="background:var(--paper);color:var(--ink);border-top:1px solid rgba(15,15,18,.06);">
   <div class="section-inner">
     <h2 style="font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.1;color:var(--ink);">How carbon-negative chalk works.</h2>
-    <div style="display:flex;align-items:center;gap:16px;margin-top:20px;margin-bottom:4px;">
+    <div class="forge-partner" style="display:flex;align-items:center;gap:16px;margin-top:20px;margin-bottom:4px;flex-wrap:wrap;">
       <span style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g2);">Developed in partnership with</span>
       <a href="https://forgeminerals.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;opacity:.75;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.75">
         <img src="forge-logo.svg" alt="Forge Minerals" style="height:18px;width:auto;" />
